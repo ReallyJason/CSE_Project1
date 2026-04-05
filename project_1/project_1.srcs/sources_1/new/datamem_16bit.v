@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 03/14/2026 02:07:20 AM
+// Create Date: 03/31/2026 06:12:23 PM
 // Design Name: 
-// Module Name: adder_16bit_test
+// Module Name: datamem_16bit
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,9 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module adder_16bit_test(
-    input [15:0] A,
-    input [15:0] B,
-    output [15:0] SUM
+module datamem_16bit(
+    input clk,
+    input MemWrite,
+    input MemRead,
+    input [15:0] Address,
+    input [15:0] WriteData,
+    output [15:0] ReadData
     );
 endmodule
