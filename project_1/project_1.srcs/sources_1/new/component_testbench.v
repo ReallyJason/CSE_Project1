@@ -21,8 +21,14 @@ module component_testbench;
     wire reg_write, mem_to_reg, mem_write_out, mem_read_out;
     wire alu_src, branch, branch_ne, jump;
     wire [1:0] alu_op;
-    wire [15:0] alu_result, mem_read_data;
+    wire [15:0] alu_result;
+    wire [15:0] mem_read_data;
     wire zero;
+    
+    // For register files
+    reg [3:0] rs, rt, rd;
+    reg [15:0] reg_write_data_in;
+    wire [15:0] read_data1, read_data2;
     
     // Instantiate modules
     control_unit ctrl(
@@ -54,7 +60,17 @@ module component_testbench;
         .mem_read(mem_read),
         .read_data(mem_read_data)
     );
-    
+   
+    register_file reg_file(
+        .clk(clk),
+        .reg_write(reg_write),
+        .read_reg1(rs),
+        .read_reg2(rt),
+        .write_reg(rd),
+        .write_data(reg_write_data_in),
+        .read_data1(read_data1),
+        .read_data2(read_data2)
+    );
     // Clock generation
     initial begin
         clk = 0;
@@ -221,6 +237,62 @@ module component_testbench;
         $display("  Loading from address 20: %d (expect 12345)\n", mem_read_data);
         
         //===================================
+        // TEST 12: Control Unit - R-Type (ADD, SUB, AND, SLL)
+        //===================================
+        $display("TEST 12: Control Unit - R-Type (ADD, SUB, AND, SLL)");
+        opcode = 4'b0000; // OP_RTYPE
+        #1;
+        $display("Opcode: R-Type (0000)");
+        $display("  RegWrite=%b (expect 1)", reg_write);
+        $display("  MemToReg=%b (expect 0)", mem_to_reg);
+        $display("  ALUSrc=%b (expect 0)", alu_src);
+        $display("  ALUOp=%b (expect 10)\n", alu_op);
+        
+        //===================================
+        // TEST 13: Register File - Write & Read Test
+        //===================================
+        $display("TEST 13: Register File - Write & Read (reg_write test)");
+        opcode = 4'b0011; //use addi to make reg_write = 1 
+        #1;
+        rd = 4'd8;            // Write to $s8
+        reg_write_data_in = 16'hAAAA;
+        @(posedge clk);
+        
+        opcode = 4'b0010; // Turn off reg_write using SW
+        #1;
+        rs = 4'd8;            // Read from $s8
+        #1;
+        $display("  Wrote 0xAAAA to $s8 with Control Unit reg_write=%b", reg_write);
+        $display("  Read from $s8: 0x%h (expect 0xAAAA)\n", read_data1);
+
+        //===================================
+        // TEST 14: Register File - Multi-Port Read & No-Write
+        //===================================
+        $display("TEST 14: Register File - Multi-Port Read & No-Write Test");
+        opcode = 4'b0011; //use addi to make reg_write = 1 
+        #1;
+        rd = 4'd9;            // Write to $s9
+        reg_write_data_in = 16'h5555;
+        @(posedge clk);
+        
+        opcode = 4'b0010; // Turn off reg_write using SW
+        #1;
+        rd = 4'd10;  // Write from $s10
+        reg_write_data_in = 16'hFFFF;
+        @(posedge clk);
+        
+        // Read $s8 and $s9 simultaneously, then check $s10
+        rs = 4'd8;
+        rt = 4'd9;
+        #1;
+        $display("  Read $s8 on port 1: 0x%h (expect 0xAAAA)", read_data1);
+        $display("  Read $s9 on port 2: 0x%h (expect 0x5555)", read_data2);
+        
+        rs = 4'd10; // Check $s10
+        #1;
+        $display("  Read $s10 (write attempted with reg_write=0): 0x%h (expect 0x0000)\n", read_data1);
+        
+        //===================================
         // Summary
         //===================================
         #20;
@@ -247,7 +319,7 @@ module sign_extend_tb;
     reg [3:0] imm_in;
     wire [15:0] imm_out;
     
-    sign_extend se(
+    SignExtension se(
         .imm_in(imm_in),
         .imm_out(imm_out)
     );
