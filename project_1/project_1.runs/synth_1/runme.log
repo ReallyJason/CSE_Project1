@@ -1,6 +1,6 @@
 
 *** Running vivado
-    with args -log adder_16bit.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source adder_16bit.tcl
+    with args -log component_testbench.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source component_testbench.tcl
 
 
 
@@ -8,82 +8,207 @@
   **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
   **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
   **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-  **** Start of session at: Sat Mar 14 02:08:01 2026
+  **** Start of session at: Sun Apr  5 11:24:49 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
-source adder_16bit.tcl -notrace
-create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:06 . Memory (MB): peak = 529.781 ; gain = 218.383
-Command: read_checkpoint -auto_incremental -incremental {E:/Vivado projects/project_1/project_1.srcs/utils_1/imports/synth_1/fourbit_adder.dcp}
-INFO: [Vivado 12-5825] Read reference checkpoint from E:/Vivado projects/project_1/project_1.srcs/utils_1/imports/synth_1/fourbit_adder.dcp for incremental synthesis
+source component_testbench.tcl -notrace
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 529.902 ; gain = 217.973
+Command: read_checkpoint -auto_incremental -incremental {E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/utils_1/imports/synth_1/adder_16bit.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/utils_1/imports/synth_1/adder_16bit.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
-Command: synth_design -top adder_16bit -part xc7a35tcpg236-1
+Command: synth_design -top component_testbench -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 79748
+INFO: [Synth 8-7075] Helper process launched with PID 42488
+
+*** Running vivado
+    with args -log component_testbench.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source component_testbench.tcl
+
+
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Sun Apr  5 11:25:19 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source component_testbench.tcl -notrace
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 529.746 ; gain = 218.316
+Command: read_checkpoint -auto_incremental -incremental {E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/utils_1/imports/synth_1/adder_16bit.dcp}
+INFO: [Vivado 12-5825] Read reference checkpoint from E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/utils_1/imports/synth_1/adder_16bit.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top component_testbench -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 36884
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1261.477 ; gain = 540.582
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1263.105 ; gain = 541.898
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'adder_16bit' [E:/Vivado projects/project_1/project_1.srcs/sources_1/new/adder_16bit.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'adder_16bit' (0#1) [E:/Vivado projects/project_1/project_1.srcs/sources_1/new/adder_16bit.v:23]
+INFO: [Synth 8-6157] synthesizing module 'component_testbench' [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:8]
+WARNING: [Synth 8-6896] loop limit (65536) exceeded inside initial block, initial block items will be ignored [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:77]
+INFO: [Synth 8-251] =========================================== [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:82]
+INFO: [Synth 8-251] Component Testing Started [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:83]
+INFO: [Synth 8-251] ===========================================
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:84]
+INFO: [Synth 8-251] TEST 1: Control Unit - LW Instruction [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:101]
+INFO: [Synth 8-251] Opcode: LW (0001) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:104]
+INFO: [Synth 8-251]   RegWrite=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:105]
+INFO: [Synth 8-251]   MemToReg=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:106]
+INFO: [Synth 8-251]   MemRead=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:107]
+INFO: [Synth 8-251]   MemWrite=1'bx (expect 0) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:108]
+INFO: [Synth 8-251]   ALUSrc=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:109]
+INFO: [Synth 8-251]   ALUOp=2'bxx (expect 00)
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:110]
+INFO: [Synth 8-251] TEST 2: Control Unit - SW Instruction [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:115]
+INFO: [Synth 8-251] Opcode: SW (0010) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:118]
+INFO: [Synth 8-251]   RegWrite=1'bx (expect 0) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:119]
+INFO: [Synth 8-251]   MemWrite=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:120]
+INFO: [Synth 8-251]   MemRead=1'bx (expect 0) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:121]
+INFO: [Synth 8-251]   ALUSrc=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:122]
+INFO: [Synth 8-251]   ALUOp=2'bxx (expect 00)
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:123]
+INFO: [Synth 8-251] TEST 3: Control Unit - ADDI Instruction [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:128]
+INFO: [Synth 8-251] Opcode: ADDI (0011) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:131]
+INFO: [Synth 8-251]   RegWrite=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:132]
+INFO: [Synth 8-251]   MemToReg=1'bx (expect 0) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:133]
+INFO: [Synth 8-251]   ALUSrc=1'bx (expect 1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:134]
+INFO: [Synth 8-251]   ALUOp=2'bxx (expect 00)
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:135]
+INFO: [Synth 8-251] TEST 4: ALU - Addition [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:140]
+INFO: [Synth 8-251]   10 + 25 = x (expect 35) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:145]
+INFO: [Synth 8-251]   Zero flag = 1'bx (expect 0)
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:146]
+INFO: [Synth 8-251] TEST 5: ALU - Subtraction [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:151]
+INFO: [Synth 8-251]   50 - 20 = x (expect 30) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:156]
+INFO: [Synth 8-251]   Zero flag = 1'bx (expect 0)
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:157]
+INFO: [Synth 8-251] TEST 6: ALU - Zero Flag (for branches) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:162]
+INFO: [Synth 8-251]   15 - 15 = x (expect 0) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:167]
+INFO: [Synth 8-251]   Zero flag = 1'bx (expect 1)
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:168]
+INFO: [Synth 8-251] TEST 7: ALU - AND Operation [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:173]
+INFO: [Synth 8-251]   0xFF00 & 0x0FFF = 0xxxxx (expect 0x0F00) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:178]
+INFO: [Synth 8-251]   Zero flag = 1'bx
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:179]
+INFO: [Synth 8-251] TEST 8: ALU - Shift Left Logical [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:184]
+INFO: [Synth 8-251]   0x0005 << 2 = 0xxxxx (expect 0x0014) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:189]
+INFO: [Synth 8-251]   Zero flag = 1'bx
+ [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:190]
+INFO: [Synth 8-251] TEST 9: Data Memory - Write Operation [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:195]
+WARNING: [Synth 8-6896] event control except as first statement of always block inside initial block, initial block items will be ignored [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:196]
+WARNING: [Synth 8-11581] system task call 'monitor' not supported [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:308]
+INFO: [Synth 8-6157] synthesizing module 'control_unit' [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/control_unit.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'control_unit' (0#1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/control_unit.v:23]
+INFO: [Synth 8-6157] synthesizing module 'alu' [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/alu.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (0#1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/alu.v:23]
+INFO: [Synth 8-6157] synthesizing module 'data_memory' [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/data_memory.v:23]
+INFO: [Synth 8-251] Data Memory Initialized [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/data_memory.v:51]
+INFO: [Synth 8-6155] done synthesizing module 'data_memory' (0#1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/data_memory.v:23]
+INFO: [Synth 8-6157] synthesizing module 'register_file' [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/register_file.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'register_file' (0#1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/register_file.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'component_testbench' (0#1) [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:8]
+WARNING: [Synth 8-4767] Trying to implement RAM 'mem_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/data_memory.v:60]
+Reason is one or more of the following :
+	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
+	2: Invalid write to RAM. 
+	3: No valid clock found for write to RAM. 
+WARNING: [Synth 8-3848] Net clk in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:11]
+WARNING: [Synth 8-3848] Net opcode in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:14]
+WARNING: [Synth 8-3848] Net alu_a in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:15]
+WARNING: [Synth 8-3848] Net alu_b in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:15]
+WARNING: [Synth 8-3848] Net alu_control in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:16]
+WARNING: [Synth 8-3848] Net mem_addr in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:17]
+WARNING: [Synth 8-3848] Net mem_write_data in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:17]
+WARNING: [Synth 8-3848] Net mem_write in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:18]
+WARNING: [Synth 8-3848] Net mem_read in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:18]
+WARNING: [Synth 8-3848] Net rs in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:29]
+WARNING: [Synth 8-3848] Net rt in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:29]
+WARNING: [Synth 8-3848] Net rd in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:29]
+WARNING: [Synth 8-3848] Net reg_write_data_in in module/entity component_testbench does not have driver. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v:30]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1421.617 ; gain = 700.410
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1421.617 ; gain = 700.410
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1421.617 ; gain = 700.410
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1378.676 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.069 . Memory (MB): peak = 1421.617 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [E:/Vivado projects/project_1/project_1.srcs/constrs_1/new/16bit_adder.xdc]
-Finished Parsing XDC File [E:/Vivado projects/project_1/project_1.srcs/constrs_1/new/16bit_adder.xdc]
+Parsing XDC File [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:1]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:3]
+CRITICAL WARNING: [Designutils 20-1307] Command '//' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:5]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:6]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:7]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:8]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:9]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:10]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:11]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:12]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:13]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:14]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:15]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:16]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:17]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:18]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:19]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:20]
+CRITICAL WARNING: [Designutils 20-1307] Command 'NET' is not supported in the xdc constraint file. [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc:21]
+Finished Parsing XDC File [E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/constrs_1/new/board.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1378.676 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1493.531 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1378.676 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1493.531 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Preparing Guide Design
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6895] The reference checkpoint E:/Vivado projects/project_1/project_1.srcs/utils_1/imports/synth_1/fourbit_adder.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
+CRITICAL WARNING: [Synth 8-6895] The reference checkpoint E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/utils_1/imports/synth_1/adder_16bit.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
 ---------------------------------------------------------------------------------
-Finished Doing Graph Differ : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1378.676 ; gain = 657.781
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Preparing Guide Design : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished Doing Graph Differ : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1378.676 ; gain = 657.781
+Finished Preparing Guide Design : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 1493.531 ; gain = 772.324
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 
 
@@ -102,6 +227,18 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input   16 Bit       Adders := 1     
+	   3 Input   16 Bit       Adders := 1     
++---XORs : 
+	   2 Input     16 Bit         XORs := 1     
++---Registers : 
+	                8 Bit    Registers := 256   
++---Muxes : 
+	   2 Input   16 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   8 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 389   
+	   8 Input    1 Bit        Muxes := 7     
+	   3 Input    1 Bit        Muxes := 124   
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -118,21 +255,30 @@ No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-6014] Unused sequential element reg_file/registers_reg was removed. 
+WARNING: [Synth 8-7129] Port address[15] in module data_memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[14] in module data_memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[13] in module data_memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[12] in module data_memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[11] in module data_memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[10] in module data_memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[9] in module data_memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[8] in module data_memory is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1407.070 ; gain = 686.176
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1407.070 ; gain = 686.176
+Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1407.070 ; gain = 686.176
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 1493.531 ; gain = 772.324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -150,37 +296,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -193,37 +339,30 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+-------+------+
-|      |Cell   |Count |
-+------+-------+------+
-|1     |CARRY4 |     4|
-|2     |LUT2   |    16|
-|3     |IBUF   |    32|
-|4     |OBUF   |    16|
-+------+-------+------+
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 1 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:21 . Memory (MB): peak = 1656.000 ; gain = 935.105
-Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1656.000 ; gain = 935.105
+Synthesis finished with 0 errors, 1 critical warnings and 9 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:35 . Memory (MB): peak = 1679.480 ; gain = 886.359
+Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1679.480 ; gain = 958.273
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1668.062 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1679.480 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1766.371 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1784.508 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 48cbd61d
+Synth Design complete | Checksum: 6832a7d1
 INFO: [Common 17-83] Releasing license: Synthesis
-19 Infos, 0 Warnings, 1 Critical Warnings and 0 Errors encountered.
+66 Infos, 26 Warnings, 20 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 1766.371 ; gain = 1228.594
+synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:44 . Memory (MB): peak = 1784.508 ; gain = 1248.418
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1766.371 ; gain = 0.000
-INFO: [Common 17-1381] The checkpoint 'E:/Vivado projects/project_1/project_1.runs/synth_1/adder_16bit.dcp' has been generated.
-INFO: [Vivado 12-24828] Executing command : report_utilization -file adder_16bit_utilization_synth.rpt -pb adder_16bit_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Mar 14 02:08:39 2026...
+INFO: [Common 17-1381] The checkpoint 'E:/Vivado projects/CSE_Project1/project_1/project_1.runs/synth_1/component_testbench.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file component_testbench_utilization_synth.rpt -pb component_testbench_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Apr  5 11:26:14 2026...
