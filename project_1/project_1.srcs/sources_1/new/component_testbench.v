@@ -140,8 +140,9 @@ module component_testbench;
     register_file rf(
         .clk(clk),
         .reg_write(reg_write),
-        .read_reg1(read_reg1),
-        .read_reg2(read_reg2),
+        .read_reg1(rs),
+        .read_reg2(rt),
+        .write_reg(rd),
         .write_data(reg_write_data_in),
         .read_data1(read_data1),
         .read_data2(read_data2)
@@ -542,10 +543,6 @@ module component_testbench;
         $display("===========================================");
 
         $finish;
-    end
-
-    initial begin
-        $monitor("Time=%0t clk=%b", $time, clk);
     end
 
 endmodule

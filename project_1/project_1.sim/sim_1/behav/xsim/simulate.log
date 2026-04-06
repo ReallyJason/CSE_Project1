@@ -108,20 +108,20 @@ Time=65000 clk=1
 TEST 15: Register File - Write / Read
 Time=70000 clk=0
 Time=75000 clk=1
-  Read R3 =     x (expect 55)
+  Read R3 =    55 (expect 55)
 Time=80000 clk=0
 Time=85000 clk=1
-  Read R7 =     x (expect 1234)
+  Read R7 =  1234 (expect 1234)
 
 TEST 16: ALU -> WriteBack -> Register File
 Time=90000 clk=0
 Time=95000 clk=1
-  R5 after ALU write-back =     x (expect 999)
+  R5 after ALU write-back = 43981 (expect 999)
 
 TEST 17: MEM -> WriteBack -> Register File
 Time=100000 clk=0
 Time=105000 clk=1
-  R6 after MEM write-back =     x (expect 4321)
+  R6 after MEM write-back =   999 (expect 4321)
 
 TEST 18: PC Mux Route
   sel=0 -> next_pc =    32 (expect 32)
@@ -147,4 +147,4 @@ Time=145000 clk=1
 ===========================================
 Full Component Testing Completed
 ===========================================
-$finish called at time : 149 ns : File "E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v" Line 544
+$finish called at time : 149 ns : File "E:/Vivado projects/CSE_Project1/project_1/project_1.srcs/sources_1/new/component_testbench.v" Line 545
