@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+
 module instruction_decode (
     input  [15:0] instruction,
     output [3:0]  opcode,

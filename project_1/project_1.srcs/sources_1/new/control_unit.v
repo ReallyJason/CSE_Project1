@@ -1,27 +1,8 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/30/2026 11:52:25 AM
-// Design Name: 
-// Module Name: control_unit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module control_unit(
     input [3:0] opcode,
+
     output reg reg_write,
     output reg mem_to_reg,
     output reg mem_write,
@@ -33,8 +14,6 @@ module control_unit(
     output reg [1:0] alu_op
     );
 
-
-// Opcode definitions
     parameter OP_RTYPE = 4'b0000;  // R-type (add, sub, sll, and)
     parameter OP_LW    = 4'b0001;  // Load word
     parameter OP_SW    = 4'b0010;  // Store word
@@ -44,10 +23,9 @@ module control_unit(
     parameter OP_JMP   = 4'b0110;  // Jump
     parameter OP_ADDIF = 4'b0111;  // Add immediate if
     
-    // ALUOp encoding
     parameter ALU_ADD_OP  = 2'b00;  // Add (for lw, sw, addi)
     parameter ALU_SUB_OP  = 2'b01;  // Subtract (for beq, bne)
-    parameter ALU_RTYPE_OP = 2'b10; // R-type (use function code)
+    parameter ALU_RTYPE_OP = 2'b10; // R-type (function code)
     
     always @(*) begin
         // Default values (all signals off)
@@ -198,5 +176,5 @@ module control_unit(
             end
         endcase
     end
- 
+
 endmodule
