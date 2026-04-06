@@ -1,41 +1,16 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/30/2026 11:52:25 AM
-// Design Name: 
-// Module Name: instruction_memory
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module instruction_memory(
     input [15:0] address,
     output reg [15:0] instruction
     );
 
-// Memory array: 256 locations (can be reduced to 64 minimum)
-    // Each location holds one 16-bit instruction
-    reg [15:0] mem [0:255];
+    reg [15:0] mem [0:255]; //256 location address -> 8 bits at each address
     integer i;
     
-    // Initialize memory with test program
     initial begin
-        // Initialize all memory to NOP (or zeros)
-      
         for (i = 0; i < 256; i = i + 1) begin
-            mem[i] = 16'h0000;
+            mem[i] = 16'h0000; //all mem stores 0
         end
         
         // Sample test program demonstrating sw, lw, addi
@@ -87,5 +62,5 @@ module instruction_memory(
     always @(*) begin
         instruction = mem[address[15:1]];  // Divide address by 2
     end
- 
+
 endmodule

@@ -13,13 +13,13 @@ module register_file(
     output wire [15:0] read_data1,
     output wire [15:0] read_data2
     );
-    
+
     reg [15:0] registers [0:15];
     integer i;
     
     initial begin
         for (i = 0; i < 16; i = i + 1) begin
-            registers[i] = 16'd0;
+            registers[i] = 16'd0; //make everything 0 in the begining
         end
     end
     

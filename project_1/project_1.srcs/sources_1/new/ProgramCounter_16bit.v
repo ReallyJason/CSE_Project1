@@ -6,8 +6,8 @@ module ProgramCounter_16bit(
     output reg [15:0] current
     );
     
-    always @(posedge clk)begin
-        current <= next;
+    always @(posedge clk) begin
+        current <= next; //no block
     end
     
 endmodule
