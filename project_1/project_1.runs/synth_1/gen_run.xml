@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1775435337" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/component_testbench.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1775437412" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/component_testbench.dcp">
   <File Type="PA-TCL" Name="datapath.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="datapath_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="datapath_reports.tcl"/>
   <File Type="RDS-RDS" Name="datapath.vds"/>
-  <File Type="RDS-PROPCONSTRS" Name="datapath_drc_synth.rpt"/>
   <File Type="RDS-UTIL" Name="datapath_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="datapath_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="datapath.dcp"/>
@@ -111,6 +111,12 @@
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/board.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>

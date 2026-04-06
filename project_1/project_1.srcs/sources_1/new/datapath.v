@@ -3,7 +3,7 @@
 module datapath(
     input clk,
     input reset,
-    output [15:0] out_port  // Added to prevent Vivado "empty design" error
+    output [15:0] led  // Added to prevent Vivado "empty design" error
 );
 
     //=========================================================
@@ -14,7 +14,7 @@ module datapath(
     wire [15:0] pc_current, pc_next, pc_plus2, pc_branch_target, pc_after_branch;
     
     // Output assignment for synthesis
-    assign out_port = pc_current; 
+    assign led = pc_current; 
 
     // Instruction Wires
     wire [15:0] instruction;
