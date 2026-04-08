@@ -3,8 +3,8 @@
 # SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Tue Apr  7 12:40:01 2026
-# Process ID         : 72696
+# Start of session at: Tue Apr  7 20:56:09 2026
+# Process ID         : 46248
 # Current directory  : E:/Vivado projects/CSE_Project1/project_1/project_1.runs/synth_1
 # Command line       : vivado.exe -log datapath.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source datapath.tcl
 # Log file           : E:/Vivado projects/CSE_Project1/project_1/project_1.runs/synth_1/datapath.vds
@@ -17,8 +17,8 @@
 # CPU Physical cores : 6
 # CPU Logical cores  : 12
 # Host memory        : 34159 MB
-# Swap memory        : 2818 MB
-# Total Virtual      : 36978 MB
-# Available Virtual  : 6758 MB
+# Swap memory        : 2952 MB
+# Total Virtual      : 37112 MB
+# Available Virtual  : 15829 MB
 #-----------------------------------------------------------
 source datapath.tcl -notrace

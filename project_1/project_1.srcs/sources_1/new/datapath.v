@@ -3,14 +3,9 @@
 module datapath(
     input clk,
     input reset,
-    output [15:0] led  // Added to prevent Vivado "empty design" error
+    output [15:0] led  // output given via LED
 );
 
-    //=========================================================
-    // 1. WIRES (The physical connections between modules)
-    //=========================================================
-    
-    // Program Counter Wires
     wire [15:0] pc_current, pc_next, pc_plus2, pc_branch_target, pc_after_branch;
     
     // Output assignment for synthesis
@@ -36,9 +31,7 @@ module datapath(
     // Data Memory Wires
     wire [15:0] mem_read_data;
 
-    //=========================================================
-    // 2. INSTRUCTION FETCH STAGE
-    //=========================================================
+    // INSTRUCTION FETCH STAGE
     
     ProgramCounter_16bit pc_reg(
         .clk(clk),
@@ -56,11 +49,8 @@ module datapath(
         .address(pc_current),
         .instruction(instruction)
     );
-
-    //=========================================================
     // 3. INSTRUCTION DECODE & CONTROL STAGE
-    //=========================================================
-    
+      
     instruction_decode decode(
         .instruction(instruction),
         .opcode(opcode),
@@ -104,9 +94,8 @@ module datapath(
         .immediate_out(explicit_sign_ext)
     );
 
-    //=========================================================
     // 4. EXECUTION (ALU) STAGE
-    //=========================================================
+    
     
     mux_alu_src alu_mux(
         .reg_data(read_data2),
@@ -140,9 +129,8 @@ module datapath(
         .zero(zero)
     );
 
-    //=========================================================
     // 5. MEMORY & WRITEBACK STAGE
-    //=========================================================
+
     
     data_memory dmem(
         .clk(clk),
@@ -160,9 +148,8 @@ module datapath(
         .write_data(write_data)
     );
 
-    //=========================================================
     // 6. BRANCH & JUMP LOGIC
-    //=========================================================
+
     
     wire branch_taken;
     assign branch_taken = (branch & zero) | (branch_ne & ~zero);
