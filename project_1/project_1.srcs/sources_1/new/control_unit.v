@@ -28,7 +28,7 @@ module control_unit(
     parameter ALU_RTYPE_OP = 2'b10; // R-type (function code)
     
     always @(*) begin
-        // Default values (all signals off)
+        // Default values
         reg_write = 0;
         mem_to_reg = 0;
         mem_write = 0;
@@ -40,9 +40,7 @@ module control_unit(
         alu_op = 2'b00;
         
         case (opcode)
-            //==================================================
             // R-TYPE INSTRUCTIONS (add, sub, sll, and)
-            //==================================================
             OP_RTYPE: begin
                 reg_write = 1;      // Write result to register
                 mem_to_reg = 0;     // Result comes from ALU
@@ -55,9 +53,7 @@ module control_unit(
                 alu_op = ALU_RTYPE_OP; // Use function code
             end
             
-            //==================================================
             // LW (LOAD WORD)
-            //==================================================
             OP_LW: begin
                 reg_write = 1;      // Write loaded data to register
                 mem_to_reg = 1;     // Data comes from memory
@@ -70,9 +66,7 @@ module control_unit(
                 alu_op = ALU_ADD_OP; // ALU adds base + offset
             end
             
-            //==================================================
             // SW (STORE WORD)
-            //==================================================
             OP_SW: begin
                 reg_write = 0;      // No register write
                 mem_to_reg = 0;     // Don't care (not writing to reg)
@@ -85,9 +79,7 @@ module control_unit(
                 alu_op = ALU_ADD_OP; // ALU adds base + offset
             end
             
-            //==================================================
             // ADDI (ADD IMMEDIATE)
-            //==================================================
             OP_ADDI: begin
                 reg_write = 1;      // Write result to register
                 mem_to_reg = 0;     // Result comes from ALU
@@ -100,9 +92,7 @@ module control_unit(
                 alu_op = ALU_ADD_OP; // ALU performs addition
             end
             
-            //==================================================
             // BEQ (BRANCH IF EQUAL)
-            //==================================================
             OP_BEQ: begin
                 reg_write = 0;      // No register write
                 mem_to_reg = 0;     // Don't care
@@ -115,9 +105,7 @@ module control_unit(
                 alu_op = ALU_SUB_OP; // ALU subtracts for comparison
             end
             
-            //==================================================
             // BNE (BRANCH IF NOT EQUAL)
-            //==================================================
             OP_BNE: begin
                 reg_write = 0;
                 mem_to_reg = 0;
@@ -130,9 +118,7 @@ module control_unit(
                 alu_op = ALU_SUB_OP;
             end
             
-            //==================================================
             // JMP (JUMP)
-            //==================================================
             OP_JMP: begin
                 reg_write = 0;
                 mem_to_reg = 0;
@@ -145,9 +131,7 @@ module control_unit(
                 alu_op = 2'b00;     // Don't care
             end
             
-            //==================================================
             // ADDIF (ADD IMMEDIATE IF)
-            //==================================================
             OP_ADDIF: begin
                 reg_write = 1;      // Conditionally write (handled by condition logic)
                 mem_to_reg = 0;
@@ -160,9 +144,7 @@ module control_unit(
                 alu_op = ALU_ADD_OP;
             end
             
-            //==================================================
             // DEFAULT (treat as NOP or R-type)
-            //==================================================
             default: begin
                 reg_write = 0;
                 mem_to_reg = 0;

@@ -56,6 +56,12 @@ module component_testbench;
     reg         bj_branch_eq, bj_branch_ne, bj_jump;
     wire [15:0] bj_branch_target, bj_jump_target;
     wire        bj_pc_src;
+
+//sign extension    
+    reg [3:0] imm_in;
+    wire [15:0] imm_out;
+    
+    
     // Instantiate original modules
     control_unit ctrl(
         .opcode(opcode),
@@ -151,13 +157,14 @@ module component_testbench;
         .jump_target(bj_jump_target),
         .pc_src(bj_pc_src)
     );
+    
+    SignExtension se_unit(
+        .immediate_in(imm_in),
+        .immediate_out(imm_out)
+    );
 
     
     initial begin
-        
-        $display("Starting Component Testing .....");
-        
-
         // Initialize original signals
         opcode = 4'b0000;
         alu_a = 16'd0;
@@ -194,107 +201,64 @@ module component_testbench;
         bj_branch_eq = 1'b0;
         bj_branch_ne = 1'b0;
         bj_jump = 1'b0;
+        
+        imm_in=4'b0000;
 
         #10;
 
       
         // TEST 1: Control Unit - LW
        
-        $display("TEST 1: Control Unit - LW Instruction");
         opcode = 4'b0001;
-        #1;
-        $display("Opcode: LW (0001)");
-        $display("  RegWrite=%b (expect 1)", reg_write);
-        $display("  MemToReg=%b (expect 1)", mem_to_reg);
-        $display("  MemRead=%b (expect 1)", mem_read_out);
-        $display("  MemWrite=%b (expect 0)", mem_write_out);
-        $display("  ALUSrc=%b (expect 1)", alu_src);
-        $display("  ALUOp=%b (expect 00)\n", alu_op);
-
-       
+        #1; 
+        
         // TEST 2: Control Unit - SW
        
-        $display("TEST 2: Control Unit - SW Instruction");
         opcode = 4'b0010;
         #1;
-        $display("Opcode: SW (0010)");
-        $display("  RegWrite=%b (expect 0)", reg_write);
-        $display("  MemWrite=%b (expect 1)", mem_write_out);
-        $display("  MemRead=%b (expect 0)", mem_read_out);
-        $display("  ALUSrc=%b (expect 1)", alu_src);
-        $display("  ALUOp=%b (expect 00)\n", alu_op);
 
-      
         // TEST 3: Control Unit - ADDI
        
-        $display("TEST 3: Control Unit - ADDI Instruction");
         opcode = 4'b0011;
         #1;
-        $display("Opcode: ADDI (0011)");
-        $display("  RegWrite=%b (expect 1)", reg_write);
-        $display("  MemToReg=%b (expect 0)", mem_to_reg);
-        $display("  ALUSrc=%b (expect 1)", alu_src);
-        $display("  ALUOp=%b (expect 00)\n", alu_op);
-
         
         // TEST 4: ALU - Addition
      
-        $display("TEST 4: ALU - Addition");
         alu_a = 16'd10;
         alu_b = 16'd25;
         alu_control = 3'b000;
         #1;
-        $display("  10 + 25 = %d (expect 35)", alu_result);
-        $display("  Zero flag = %b (expect 0)\n", zero);
-
      
         // TEST 5: ALU - Subtraction
       
-        $display("TEST 5: ALU - Subtraction");
         alu_a = 16'd50;
         alu_b = 16'd20;
         alu_control = 3'b001;
         #1;
-        $display("  50 - 20 = %d (expect 30)", alu_result);
-        $display("  Zero flag = %b (expect 0)\n", zero);
-
       
         // TEST 6: ALU - Zero Flag
      
-        $display("TEST 6: ALU - Zero Flag (for branches)");
         alu_a = 16'd15;
         alu_b = 16'd15;
         alu_control = 3'b001;
         #1;
-        $display("  15 - 15 = %d (expect 0)", alu_result);
-        $display("  Zero flag = %b (expect 1)\n", zero);
-
         
         // TEST 7: ALU - AND Operation
        
-        $display("TEST 7: ALU - AND Operation");
         alu_a = 16'hFF00;
         alu_b = 16'h0FFF;
         alu_control = 3'b010;
         #1;
-        $display("  0xFF00 & 0x0FFF = 0x%h (expect 0x0F00)", alu_result);
-        $display("  Zero flag = %b\n", zero);
-
      
         // TEST 8: ALU - Shift Left
        
-        $display("TEST 8: ALU - Shift Left Logical");
         alu_a = 16'h0005;
         alu_b = 16'd2;
         alu_control = 3'b011;
         #1;
-        $display("  0x0005 << 2 = 0x%h (expect 0x0014)", alu_result);
-        $display("  Zero flag = %b\n", zero);
-
         
         // TEST 9: Data Memory - Write
       
-        $display("TEST 9: Data Memory - Write Operation");
         @(posedge clk);
         mem_addr = 16'd10;
         mem_write_data = 16'hABCD;
@@ -303,28 +267,21 @@ module component_testbench;
         @(posedge clk);
         mem_write = 0;
         #1;
-        $display("  Wrote 0xABCD to address 10\n");
 
-      
         // TEST 10: Data Memory - Read
        
-        $display("TEST 10: Data Memory - Read Operation");
         mem_addr = 16'd10;
         mem_write = 0;
         mem_read = 1;
         #1;
-        $display("  Read from address 10: 0x%h (expect 0xABCD)\n", mem_read_data);
-
        
         // TEST 11: Store and Load Sequence
       
-        $display("TEST 11: Complete SW-LW Sequence");
         @(posedge clk);
         mem_addr = 16'd20;
         mem_write_data = 16'd12345;
         mem_write = 1;
         mem_read = 0;
-        $display("  Storing 12345 at address 20");
 
         @(posedge clk);
         mem_write = 0;
@@ -333,64 +290,36 @@ module component_testbench;
         mem_addr = 16'd20;
         mem_read = 1;
         #1;
-        $display("  Loading from address 20: %d (expect 12345)\n", mem_read_data);
-
       
         // TEST 12: Instruction Memory - Direct Fetch
         
-        $display("TEST 12: Instruction Memory - Direct Fetch");
         im_addr = 16'd0;  #1;
-        $display("  IMEM[0x0000] = 0x%h", im_instruction);
 
         im_addr = 16'd2;  #1;
-        $display("  IMEM[0x0002] = 0x%h", im_instruction);
 
         im_addr = 16'd4;  #1;
-        $display("  IMEM[0x0004] = 0x%h", im_instruction);
 
         im_addr = 16'd6;  #1;
-        $display("  IMEM[0x0006] = 0x%h\n", im_instruction);
-
         
         // TEST  Instruction Decode
       
-        $display("TEST 13: Instruction Decode");
-
         id_instruction = 16'h354F; #1;
-        $display("  Instr=0x354F");
-        $display("    opcode       = 0x%h (expect 3)", id_opcode);
-        $display("    rt_rd        = 0x%h (expect 5)", id_rt_rd);
-        $display("    rs           = 0x%h (expect 4)", id_rs);
-        $display("    immediate    = 0x%h (expect F)", id_immediate);
-        $display("    imm_sign_ext = 0x%h (expect FFFF)", id_imm_sign_ext);
 
         id_instruction = 16'h4122; #1;
-        $display("  Instr=0x4122");
-        $display("    opcode       = 0x%h (expect 4)", id_opcode);
-        $display("    branch_offset= 0x%h", id_branch_offset);
 
         id_instruction = 16'h6004; #1;
-        $display("  Instr=0x6004");
-        $display("    opcode       = 0x%h (expect 6)", id_opcode);
-        $display("    jump_addr    = 0x%h (expect 004)", id_jump_addr);
-        $display("    jump_offset  = 0x%h (expect 0x0008)\n", id_jump_offset);
-
       
         // TEST : Write-Back Mux
  
-        $display("TEST 14: Write-Back Mux");
         wb_alu_data = 16'h001C;
         wb_mem_data = 16'hABCD;
 
         wb_sel = 1'b0; #1;
-        $display("  sel=0 -> wb_write_data = 0x%h (expect 0x001C)", wb_write_data);
 
         wb_sel = 1'b1; #1;
-        $display("  sel=1 -> wb_write_data = 0x%h (expect 0xABCD)\n", wb_write_data);
 
        //  TEST 15: Register File - Write / Read
-        $display("TEST 15: Register File - Write / Read");
-
+      
         opcode = 4'b0011; 
 
         rs = 4'd3;
@@ -399,7 +328,6 @@ module component_testbench;
         reg_write_data_in = 16'd55;
         @(posedge clk);
         #1;
-        $display("  Read R3 = %d (expect 55)", read_data1);
 
         rs = 4'd7;
         rt = 4'd0;
@@ -407,10 +335,8 @@ module component_testbench;
         reg_write_data_in = 16'd1234;
         @(posedge clk);
         #1;
-        $display("  Read R7 = %d (expect 1234)\n", read_data1);
 
     //  TEST 16: ALU -> WriteBack -> Register File
-        $display("TEST 16: ALU -> WriteBack -> Register File");
         wb_alu_data = 16'd999;
         wb_mem_data = 16'd2222;
         wb_sel = 1'b0;
@@ -422,10 +348,8 @@ module component_testbench;
         opcode = 4'b0011;
         @(posedge clk);
         #1;
-        $display("  R5 after ALU write-back = %d (expect 999)\n", read_data1);
 
       // TEST 17: MEM -> WriteBack -> Register File
-        $display("TEST 17: MEM -> WriteBack -> Register File");
         wb_alu_data = 16'd111;
         wb_mem_data = 16'd4321;
         wb_sel = 1'b1;
@@ -437,33 +361,39 @@ module component_testbench;
         opcode = 4'b0011;
         @(posedge clk);
         #1;
-        $display("  R6 after MEM write-back = %d (expect 4321)\n", read_data1);
+        
+        //sign extension tests
+        imm_in = 4'b0000; #1;
+
+        imm_in = 4'b0101; #1;
+
+        imm_in = 4'b0111; #1;
+
+        imm_in = 4'b1111; #1;
+
+        imm_in = 4'b1000; #1;
+
+        imm_in = 4'b1010; #1;
+
 
      // PC TO MUX ROUTE
-        $display("TEST 18: PC Mux Route");
         pc_plus2_in = 16'd32;
         pc_branch_addr = 16'd42;
 
         pc_mux_sel = 1'b0; #1;
-        $display("  sel=0 -> next_pc = %d (expect 32)", pc_mux_out);
 
         pc_mux_sel = 1'b1; #1;
-        $display("  sel=1 -> next_pc = %d (expect 42)\n", pc_mux_out);
 
         // Pc REG 
-        $display("TEST 19: Program Counter Register");
         pc_next = 16'd100;
         @(posedge clk);
         #1;
-        $display("  PC current = %d (expect 100)", pc_current);
 
         pc_next = 16'd102;
         @(posedge clk);
         #1;
-        $display("  PC current = %d (expect 102)\n", pc_current);
 
         // BRANCH/ JMP UNIT
-        $display("TEST 20: Branch / Jump Unit");
 
         bj_read_data1 = 16'd10;
         bj_read_data2 = 16'd10;
@@ -474,8 +404,6 @@ module component_testbench;
         bj_branch_ne = 1'b0;
         bj_jump = 1'b0;
         #1;
-        $display("  BEQ case: pc_src=%b (expect 1), branch_target=%d (expect 26)",
-                 bj_pc_src, bj_branch_target);
 
         bj_read_data1 = 16'd10;
         bj_read_data2 = 16'd5;
@@ -483,8 +411,6 @@ module component_testbench;
         bj_branch_ne = 1'b1;
         bj_jump = 1'b0;
         #1;
-        $display("  BNE case: pc_src=%b (expect 1), branch_target=%d (expect 26)",
-                 bj_pc_src, bj_branch_target);
 
         bj_read_data1 = 16'd0;
         bj_read_data2 = 16'd0;
@@ -494,54 +420,12 @@ module component_testbench;
         bj_pc_plus2 = 16'd20;
         bj_jump_offset = 16'd12;
         #1;
-        $display("  JMP case: pc_src=%b (expect 1), jump_target=%d (expect 32)\n",
-                 bj_pc_src, bj_jump_target);
 
-        // Summary
-        #20;
-        
-        $display("Full Testing Completed ...... ");
-        
+
+        // end
+        #20;        
 
         $finish;
     end
 
-endmodule
-
-
-// Testbench for SignExt
-
-module sign_extend_tb;
-    reg [3:0] imm_in;
-    wire [15:0] imm_out;
-
-    SignExtension se(
-        .imm_in(imm_in),
-        .imm_out(imm_out)
-    );
-
-    initial begin
-        $display("\n=== Sign Extension Test .... ");
-
-        imm_in = 4'b0000; #1;
-        $display("0000 -> 0x%h (expect 0x0000)", imm_out);
-
-        imm_in = 4'b0101; #1;
-        $display("0101 -> 0x%h (expect 0x0005)", imm_out);
-
-        imm_in = 4'b0111; #1;
-        $display("0111 -> 0x%h (expect 0x0007)", imm_out);
-
-        imm_in = 4'b1111; #1;
-        $display("1111 -> 0x%h (expect 0xFFFF = -1)", imm_out);
-
-        imm_in = 4'b1000; #1;
-        $display("1000 -> 0x%h (expect 0xFFF8 = -8)", imm_out);
-
-        imm_in = 4'b1010; #1;
-        $display("1010 -> 0x%h (expect 0xFFFA = -6)", imm_out);
-
-        $display("Done Testing .... \n");
-        $finish;
-    end
 endmodule
